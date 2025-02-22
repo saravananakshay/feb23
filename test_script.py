@@ -4,10 +4,10 @@ from selenium import webdriver
 driver = webdriver.Chrome()  # Or use webdriver.Firefox()
 
 # Open a website
-driver.get("https://www.example.com")
+driver.get("https://www.google.com")
 
 # Verify the title
-assert "Example Domain" in driver.title
+assert "Google" in driver.title
 
 # Close the browser
 driver.quit()

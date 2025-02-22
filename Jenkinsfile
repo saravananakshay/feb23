@@ -11,20 +11,30 @@ pipeline {
                 git 'https://github.com/saravananakshay/testing.git'
             }
         }
-        stage('Setup Environment') {
+    stage('Setup Environment') {
             steps {
                 sh 'pip install -r requirements.txt'
             }
         }
-        stage('Run Selenium Tests') {
+    stage('Run Selenium Tests') {
             steps {
-                sh 'pytest test_script.py --headless'
+                sh 'pytest test_script.py --alluredir=allure-results'
             }
         }
-        stage('Publish Test Results') {
+    stage('Generate Report') {
             steps {
-                junit 'reports/*.xml'
+                sh 'allure generate allure-results -o allure-report --clean'
             }
         }
+    stage('Publish Report') {
+            steps {
+                publishHTML(target: [
+                reportDir: 'allure-report',
+                reportFiles: 'index.html',
+                reportName: 'Allure Test Report'
+                ])
+            }
+        }
+
     }
 }
