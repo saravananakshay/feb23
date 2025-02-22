@@ -1,13 +1,13 @@
+import pytest
 from selenium import webdriver
 
-# Initialize WebDriver
-driver = webdriver.Chrome()  # Or use webdriver.Firefox()
+class TestWikipedia:
+    def setup_method(self):
+        self.driver = webdriver.Chrome()
+        self.driver.get("https://www.wikipedia.org/")
 
-# Open a website
-driver.get("https://www.google.com")
+    def test_title(self):
+        assert "wikipedia" in self.driver.title.lower()
 
-# Verify the title
-assert "Google" in driver.title
-
-# Close the browser
-driver.quit()
+    def teardown_method(self):
+        self.driver.quit()
