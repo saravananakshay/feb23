@@ -13,17 +13,17 @@ pipeline {
         }
     stage('Setup Environment') {
             steps {
-                sh 'pip install -r requirements.txt'
+                bat 'pip install -r requirements.txt'
             }
         }
     stage('Run Selenium Tests') {
             steps {
-                sh 'pytest test_script.py --alluredir=allure-results'
+                bat 'pytest test_script.py --alluredir=allure-results'
             }
         }
     stage('Generate Report') {
             steps {
-                sh 'allure generate allure-results -o allure-report --clean'
+                bat 'allure generate allure-results -o allure-report --clean'
             }
         }
     stage('Publish Report') {
