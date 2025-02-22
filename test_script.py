@@ -7,7 +7,7 @@ driver = webdriver.Chrome()  # Or use webdriver.Firefox()
 driver.get("https://www.wikipedia.com")
 
 # Verify the title
-assert "Google" in driver.title
+assert "wikipedia" in driver.title
 
 # Close the browser
 driver.quit()
