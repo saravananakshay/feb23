@@ -4,7 +4,7 @@ from selenium import webdriver
 driver = webdriver.Chrome()  # Or use webdriver.Firefox()
 
 # Open a website
-driver.get("https://www.google.com")
+driver.get("https://www.wikipedia.com")
 
 # Verify the title
 assert "Google" in driver.title
