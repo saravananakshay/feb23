@@ -7,7 +7,7 @@ class TestWikipedia:
         self.driver.get("https://www.wikipedia.org/")
 
     def test_title(self):
-        assert "wikipedia" in self.driver.title.lower()
+        assert "Wikipedia" in self.driver.title.lower()
 
     def teardown_method(self):
         self.driver.quit()
